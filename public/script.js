@@ -26,10 +26,11 @@ async function getresults(heightRef) {
   renderPlayers(data);
 }
 function renderPlayers(players) {
+  tbody.innerHTML="";
   for(let  i=0;i<players.length;i+=2){
     console.log(players[i])
     const row = document.createElement("tr");
-    row.innerHTML = renderRow(players[i],players[i+1]);
+    row.innerHTML = renderRow(players[i],players[i+1],(i/2)+1);
     tbody.appendChild(row);
   }
     
