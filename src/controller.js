@@ -24,7 +24,7 @@ for(let i=0;i<players.length;i++){
  
   for(let j=0;j<players.length;j++){
    
-    if(parseInt(players[i].h_in)+parseInt(players[j].h_in)==req.params.heightRef){
+    if(parseInt(players[i].h_in)+parseInt(players[j].h_in)==req.params.heightRef&&i!=j){
      
     parejas[counter]=players[i];
     counter++;
