@@ -33,8 +33,11 @@ for(let i=0;i<players.length;i++){
   }
   }
 }
-
-return resp.json(parejas);
+var parejasSend=new Array();
+for(let i=0;i<parejas.length/2 +1;i++){
+  parejasSend[i]=parejas[i];
+}
+return resp.json(parejasSend);
 };
 const getAllPlayers = async (req = request, resp = response) => {
  

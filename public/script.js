@@ -34,9 +34,10 @@ function renderPlayers(players) {
   }
     
   }
-function renderRow(player1,player2) {
+function renderRow(player1,player2,pos) {
   const template = `
   <tr>
+  <td>${pos}</td> 
   <td>${player1.last_name}</td> 
   <td>${player2.last_name}</td>
   </tr>`;
