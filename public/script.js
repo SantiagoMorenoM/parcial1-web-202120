@@ -6,9 +6,9 @@ const tbody = document.getElementById('body-table');
 const message = document.getElementById('message');
 
 enterButton.addEventListener('click', (event) => {
-  //Implementar lógica del button submit
-  alert('Implementar lógica del button submit');
-  getresults(123);
+  
+ 
+  getresults(input.value);
   event.preventDefault();
 });
 
@@ -17,12 +17,31 @@ enterButton.addEventListener('click', (event) => {
  * @param {*} heightRef
  */
 async function getresults(heightRef) {
-  const resp = await fetch(`api?input=${heightRef}`);
+  console.log(heightRef)
+  const resp = await fetch(`http://localhost:3000/api/${heightRef}`);
   const data = await resp.json();
   console.log('data from back', data);
-  //printValues(data);
-}
 
+  console.log(data)
+  renderPlayers(data);
+}
+function renderPlayers(players) {
+  for(let  i=0;i<players.length;i+=2){
+    console.log(players[i])
+    const row = document.createElement("tr");
+    row.innerHTML = renderRow(players[i],players[i+1]);
+    tbody.appendChild(row);
+  }
+    
+  }
+function renderRow(player1,player2) {
+  const template = `
+  <tr>
+  <td>${player1.last_name}</td> 
+  <td>${player2.last_name}</td>
+  </tr>`;
+  return template;
+}
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
